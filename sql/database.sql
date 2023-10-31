@@ -23,9 +23,9 @@ DROP TABLE IF EXISTS `USER_ACCOUNT`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `USER_ACCOUNT` (
-  `USER_ACCOUNT_ID` varchar(36) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `AUTH_ID` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `EMAIL` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `USER_ACCOUNT_ID` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `AUTH_ID` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `EMAIL` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`USER_ACCOUNT_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -39,4 +39,4 @@ CREATE TABLE `USER_ACCOUNT` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-10-18 19:07:40
+-- Dump completed on 2023-10-31 13:03:57
