@@ -30,6 +30,15 @@ dump: dump-table dump-data
 start:
 	@docker compose -f compose.yaml up -d
 
+.PHONY: start-app
+start-app:
+	@docker compose -f compose.yaml -f compose.app.yaml up -d
+
 .PHONY: down
 down:
-	@docker compose -f compose.yaml down -v
+	@docker compose -f compose.yaml -f compose.app.yaml down -v
+
+.PHONY: logs-app
+logs-app:
+	@docker logs bankwiz_server --follow
+

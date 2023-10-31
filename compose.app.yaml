@@ -4,7 +4,7 @@ services:
     depends_on:
       - mysql
     image: ghcr.io/jbwittner/bankwiz_server:develop-latest
-    container_name: bankwiz_server_frontend
+    container_name: bankwiz_server
     ports:
       - '8080:8080'
     environment:
@@ -15,5 +15,3 @@ services:
       APPLICATION_DB_PASSWORD: BankwizPass2023
       SPRING_JPA_HIBERNATE_DDL_AUTO: validate
       PROFILES: development
-    networks:
-      - bridge
