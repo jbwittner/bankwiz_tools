@@ -16,6 +16,26 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `GROUP_RIGHT`
+--
+
+DROP TABLE IF EXISTS `GROUP_RIGHT`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `GROUP_RIGHT` (
+  `GROUP_ID` varchar(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `GROUP_RIGHT_ID` varchar(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `USER_ID` varchar(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `GROUP_RIGHT` enum('READ','WRITE','ADMIN') COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`GROUP_RIGHT_ID`),
+  KEY `FK_GROUP_RIGHT_GROUP` (`GROUP_ID`),
+  KEY `FK_GROUP_RIGHT_USER` (`USER_ID`),
+  CONSTRAINT `FK_GROUP_RIGHT_GROUP` FOREIGN KEY (`GROUP_ID`) REFERENCES `USER_GROUP` (`GROUP_ID`),
+  CONSTRAINT `FK_GROUP_RIGHT_USER` FOREIGN KEY (`USER_ID`) REFERENCES `USER_ACCOUNT` (`USER_ACCOUNT_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `USER_ACCOUNT`
 --
 
@@ -23,10 +43,24 @@ DROP TABLE IF EXISTS `USER_ACCOUNT`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `USER_ACCOUNT` (
-  `USER_ACCOUNT_ID` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `AUTH_ID` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `EMAIL` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `USER_ACCOUNT_ID` varchar(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `AUTH_ID` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `EMAIL` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`USER_ACCOUNT_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `USER_GROUP`
+--
+
+DROP TABLE IF EXISTS `USER_GROUP`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `USER_GROUP` (
+  `GROUP_ID` varchar(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `GROUP_NAME` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`GROUP_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -39,4 +73,4 @@ CREATE TABLE `USER_ACCOUNT` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-10-31 13:03:57
+-- Dump completed on 2023-11-01 19:25:04
