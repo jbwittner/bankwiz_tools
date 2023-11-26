@@ -34,11 +34,23 @@ start:
 start-app:
 	@docker compose -f compose.yaml -f compose.app.yaml up -d
 
+.PHONY: remove-app
+remove-app:
+	@docker image rm ghcr.io/jbwittner/bankwiz_server:develop-latest
+
+.PHONY: update-app
+update-app: down-app remove-app start-app
+
 .PHONY: down
 down:
 	@docker compose -f compose.yaml -f compose.app.yaml down -v
 
+.PHONY: down-app
+down-app:
+	@docker compose -f compose.yaml -f compose.app.yaml down serverapp
+
 .PHONY: logs-app
 logs-app:
 	@docker logs bankwiz_server --follow
+
 
