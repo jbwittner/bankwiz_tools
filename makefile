@@ -41,5 +41,3 @@ down-app:
 .PHONY: logs-app
 logs-app:
 	@docker logs bankwiz_server --follow
-
-
