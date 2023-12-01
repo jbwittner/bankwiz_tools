@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : mysql
--- Généré le : ven. 01 déc. 2023 à 13:39
+-- Généré le : ven. 01 déc. 2023 à 13:44
 -- Version du serveur : 8.0.33
 -- Version de PHP : 8.2.8
 
@@ -27,6 +27,7 @@ SET time_zone = "+00:00";
 -- Structure de la table `BANK_ACCOUNT`
 --
 
+DROP TABLE IF EXISTS `BANK_ACCOUNT`;
 CREATE TABLE `BANK_ACCOUNT` (
   `BASE_AMOUNT` int NOT NULL,
   `GROUP_ID` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -40,6 +41,7 @@ CREATE TABLE `BANK_ACCOUNT` (
 -- Structure de la table `GROUP_RIGHT`
 --
 
+DROP TABLE IF EXISTS `GROUP_RIGHT`;
 CREATE TABLE `GROUP_RIGHT` (
   `GROUP_ID` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `ID` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -53,6 +55,7 @@ CREATE TABLE `GROUP_RIGHT` (
 -- Structure de la table `USER_ACCOUNT`
 --
 
+DROP TABLE IF EXISTS `USER_ACCOUNT`;
 CREATE TABLE `USER_ACCOUNT` (
   `ID` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `AUTH_ID` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -65,6 +68,7 @@ CREATE TABLE `USER_ACCOUNT` (
 -- Structure de la table `USER_GROUP`
 --
 
+DROP TABLE IF EXISTS `USER_GROUP`;
 CREATE TABLE `USER_GROUP` (
   `GROUP_ID` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `GROUP_NAME` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
