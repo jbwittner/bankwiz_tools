@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : mysql
--- Généré le : mer. 24 jan. 2024 à 16:52
+-- Généré le : ven. 26 jan. 2024 à 15:38
 -- Version du serveur : 8.0.33
 -- Version de PHP : 8.2.8
 
@@ -27,11 +27,12 @@ SET time_zone = "+00:00";
 -- Structure de la table `BANK_ACCOUNT`
 --
 
+DROP TABLE IF EXISTS `BANK_ACCOUNT`;
 CREATE TABLE `BANK_ACCOUNT` (
   `BASE_AMOUNT` int NOT NULL,
-  `GROUP_ID` varchar(36) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ID` varchar(36) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `BANK_ACCOUNT_NAME` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL
+  `GROUP_ID` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ID` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `BANK_ACCOUNT_NAME` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -40,11 +41,12 @@ CREATE TABLE `BANK_ACCOUNT` (
 -- Structure de la table `GROUP_RIGHT`
 --
 
+DROP TABLE IF EXISTS `GROUP_RIGHT`;
 CREATE TABLE `GROUP_RIGHT` (
-  `GROUP_ID` varchar(36) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ID` varchar(36) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `USER_ID` varchar(36) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `GROUP_RIGHT` enum('READ','WRITE','ADMIN') COLLATE utf8mb4_unicode_ci NOT NULL
+  `GROUP_ID` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ID` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `USER_ID` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `GROUP_RIGHT` enum('READ','WRITE','ADMIN') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -53,11 +55,12 @@ CREATE TABLE `GROUP_RIGHT` (
 -- Structure de la table `TRANSACTION`
 --
 
+DROP TABLE IF EXISTS `TRANSACTION`;
 CREATE TABLE `TRANSACTION` (
   `DECIMAL_AMOUNT` int NOT NULL,
-  `BANK_ACCOUNT_ID` varchar(36) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ID` varchar(36) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `COMMENT` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `BANK_ACCOUNT_ID` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ID` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `COMMENT` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -66,10 +69,11 @@ CREATE TABLE `TRANSACTION` (
 -- Structure de la table `USER_ACCOUNT`
 --
 
+DROP TABLE IF EXISTS `USER_ACCOUNT`;
 CREATE TABLE `USER_ACCOUNT` (
-  `ID` varchar(36) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `AUTH_ID` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `EMAIL` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `ID` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `AUTH_ID` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `EMAIL` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -78,9 +82,10 @@ CREATE TABLE `USER_ACCOUNT` (
 -- Structure de la table `USER_GROUP`
 --
 
+DROP TABLE IF EXISTS `USER_GROUP`;
 CREATE TABLE `USER_GROUP` (
-  `GROUP_ID` varchar(36) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `GROUP_NAME` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `GROUP_ID` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `GROUP_NAME` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
