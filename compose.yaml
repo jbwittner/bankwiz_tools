@@ -31,4 +31,4 @@ services:
     ports:
       - '8280:8080'
     environment:
-      URL: https://raw.githubusercontent.com/jbwittner/bankwiz_openapi/main/openapi.yaml
+      URL: https://raw.githubusercontent.com/jbwittner/bankwiz_server/develop/openapi.yaml
