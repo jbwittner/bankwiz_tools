@@ -24,7 +24,7 @@ services:
     volumes:
       - pgadmin_bankwiz_volume:/var/lib/pgadmin
     environment:
-      PGADMIN_DEFAULT_EMAIL: user-name@domain-name.com
+      PGADMIN_DEFAULT_EMAIL: user-bankwizz@bankwizz.com
       PGADMIN_DEFAULT_PASSWORD: BankwizPass2023
   swaggereditor:
     image: swaggerapi/swagger-editor:v4-latest
