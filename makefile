@@ -1,19 +1,30 @@
 MYSQL_ROOT_PASSWORD := BankwizRootPass2023
+PG_PASSWORD := BankwizPass2023
+PG_USER := bankwiz_user
+PG_DATABASE := bankwiz_db
 
-.PHONY: restore-system
-restore-system:
-	@docker exec -i bankwiz_mysql sh -c 'exec mysql -uroot -p"$(MYSQL_ROOT_PASSWORD)"' < sql/prepare.sql
 
 .PHONY: restore-table
-restore-table: restore-system
-	@docker exec -i bankwiz_mysql sh -c 'exec mysql -uroot -p"$(MYSQL_ROOT_PASSWORD)" bankwiz_db' < sql/database.sql
+restore-table:
+	@docker exec -i bankwiz_database /bin/bash -c "PGPASSWORD=$(PG_PASSWORD) psql --username $(PG_USER) $(PG_DATABASE)" < sql/database.sql
 
 .PHONY: restore-data
 restore-data:
-	@docker exec -i bankwiz_mysql sh -c 'exec mysql -uroot -p"$(MYSQL_ROOT_PASSWORD)" bankwiz_db' < sql/data.sql
+	@docker exec -i bankwiz_database /bin/bash -c "PGPASSWORD=$(PG_PASSWORD) psql --username $(PG_USER) $(PG_DATABASE)" < sql/data.sql
+
+.PHONY: backup-table
+backup-table:
+	@docker exec -i bankwiz_database /bin/bash -c "PGPASSWORD=$(PG_PASSWORD) pg_dump --schema-only --clean --username $(PG_USER) $(PG_DATABASE)" > sql/database.sql
+
+.PHONY: backup-data
+backup-data:
+	@docker exec -i bankwiz_database /bin/bash -c "PGPASSWORD=$(PG_PASSWORD) pg_dump --data-only --username $(PG_USER) $(PG_DATABASE)" > sql/data.sql
 
 .PHONY: restore
-restore: restore-system restore-table restore-data
+restore: restore-table restore-data
+
+.PHONY: backup
+backup: backup-table backup-data
 
 .PHONY: start
 start:
