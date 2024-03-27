@@ -23,9 +23,18 @@ services:
       - '8180:80'
     volumes:
       - pgadmin_bankwiz_volume:/var/lib/pgadmin
+      - ./pg/servers.json:/pgadmin4/servers.json
+      - ./pg/pgpass:/tmp/pgpass
     environment:
       PGADMIN_DEFAULT_EMAIL: user-bankwizz@bankwizz.com
       PGADMIN_DEFAULT_PASSWORD: BankwizPass2023
+    entrypoint: >
+      /bin/sh -c "
+      mkdir -p /var/lib/pgadmin/storage/user-bankwizz_bankwizz.com;
+      cp /tmp/pgpass /var/lib/pgadmin/storage/user-bankwizz_bankwizz.com/pgpass;
+      chmod 600 /var/lib/pgadmin/storage/user-bankwizz_bankwizz.com/pgpass;
+      /entrypoint.sh;
+      "
   swaggereditor:
     image: swaggerapi/swagger-editor:v4-latest
     container_name: bankwiz_swaggereditor
