@@ -20,8 +20,15 @@ SET row_security = off;
 -- Data for Name: user_account; Type: TABLE DATA; Schema: public; Owner: bankwiz_user
 --
 
-COPY public.user_account (id, auth_id, email) FROM stdin;
-4bbb8a0c-afae-4f9d-824c-e0bdb25e76b0	google-oauth2|105604612464063462418	jeanbaptiste.wittner@gmail.com
+COPY public.user_account (user_account_id, auth_id, email) FROM stdin;
+\.
+
+
+--
+-- Data for Name: bank_account; Type: TABLE DATA; Schema: public; Owner: bankwiz_user
+--
+
+COPY public.bank_account (scale_base_amount, bank_account_id, user_account_id, bank_account_name, currency_iso_code) FROM stdin;
 \.
 
 
