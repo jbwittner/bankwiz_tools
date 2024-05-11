@@ -33,6 +33,14 @@ COPY public.bank_account (scale_base_amount, bank_account_id, user_account_id, b
 
 
 --
+-- Data for Name: transactions; Type: TABLE DATA; Schema: public; Owner: bankwiz_user
+--
+
+COPY public.transactions (scale_amount, bank_account_id, transaction_id, comment) FROM stdin;
+\.
+
+
+--
 -- PostgreSQL database dump complete
 --
 
