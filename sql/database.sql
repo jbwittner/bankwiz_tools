@@ -16,23 +16,23 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
-ALTER TABLE ONLY public.bank_account DROP CONSTRAINT fk_user_bankaccount;
+ALTER TABLE ONLY public.bank_accounts DROP CONSTRAINT fk_user_bankaccount;
 ALTER TABLE ONLY public.transactions DROP CONSTRAINT fk_bankaccount_transaction;
-ALTER TABLE ONLY public.user_account DROP CONSTRAINT user_account_pkey;
+ALTER TABLE ONLY public.user_accounts DROP CONSTRAINT user_accounts_pkey;
 ALTER TABLE ONLY public.transactions DROP CONSTRAINT transactions_pkey;
-ALTER TABLE ONLY public.bank_account DROP CONSTRAINT bank_account_pkey;
-DROP TABLE public.user_account;
+ALTER TABLE ONLY public.bank_accounts DROP CONSTRAINT bank_accounts_pkey;
+DROP TABLE public.user_accounts;
 DROP TABLE public.transactions;
-DROP TABLE public.bank_account;
+DROP TABLE public.bank_accounts;
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
 
 --
--- Name: bank_account; Type: TABLE; Schema: public; Owner: bankwiz_user
+-- Name: bank_accounts; Type: TABLE; Schema: public; Owner: bankwiz_user
 --
 
-CREATE TABLE public.bank_account (
+CREATE TABLE public.bank_accounts (
     scale_base_amount integer NOT NULL,
     bank_account_id uuid NOT NULL,
     user_account_id uuid NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE public.bank_account (
 );
 
 
-ALTER TABLE public.bank_account OWNER TO bankwiz_user;
+ALTER TABLE public.bank_accounts OWNER TO bankwiz_user;
 
 --
 -- Name: transactions; Type: TABLE; Schema: public; Owner: bankwiz_user
@@ -58,24 +58,24 @@ CREATE TABLE public.transactions (
 ALTER TABLE public.transactions OWNER TO bankwiz_user;
 
 --
--- Name: user_account; Type: TABLE; Schema: public; Owner: bankwiz_user
+-- Name: user_accounts; Type: TABLE; Schema: public; Owner: bankwiz_user
 --
 
-CREATE TABLE public.user_account (
+CREATE TABLE public.user_accounts (
     user_account_id uuid NOT NULL,
     auth_id character varying(255) NOT NULL,
     email character varying(255) NOT NULL
 );
 
 
-ALTER TABLE public.user_account OWNER TO bankwiz_user;
+ALTER TABLE public.user_accounts OWNER TO bankwiz_user;
 
 --
--- Name: bank_account bank_account_pkey; Type: CONSTRAINT; Schema: public; Owner: bankwiz_user
+-- Name: bank_accounts bank_accounts_pkey; Type: CONSTRAINT; Schema: public; Owner: bankwiz_user
 --
 
-ALTER TABLE ONLY public.bank_account
-    ADD CONSTRAINT bank_account_pkey PRIMARY KEY (bank_account_id);
+ALTER TABLE ONLY public.bank_accounts
+    ADD CONSTRAINT bank_accounts_pkey PRIMARY KEY (bank_account_id);
 
 
 --
@@ -87,11 +87,11 @@ ALTER TABLE ONLY public.transactions
 
 
 --
--- Name: user_account user_account_pkey; Type: CONSTRAINT; Schema: public; Owner: bankwiz_user
+-- Name: user_accounts user_accounts_pkey; Type: CONSTRAINT; Schema: public; Owner: bankwiz_user
 --
 
-ALTER TABLE ONLY public.user_account
-    ADD CONSTRAINT user_account_pkey PRIMARY KEY (user_account_id);
+ALTER TABLE ONLY public.user_accounts
+    ADD CONSTRAINT user_accounts_pkey PRIMARY KEY (user_account_id);
 
 
 --
@@ -99,15 +99,15 @@ ALTER TABLE ONLY public.user_account
 --
 
 ALTER TABLE ONLY public.transactions
-    ADD CONSTRAINT fk_bankaccount_transaction FOREIGN KEY (bank_account_id) REFERENCES public.bank_account(bank_account_id);
+    ADD CONSTRAINT fk_bankaccount_transaction FOREIGN KEY (bank_account_id) REFERENCES public.bank_accounts(bank_account_id);
 
 
 --
--- Name: bank_account fk_user_bankaccount; Type: FK CONSTRAINT; Schema: public; Owner: bankwiz_user
+-- Name: bank_accounts fk_user_bankaccount; Type: FK CONSTRAINT; Schema: public; Owner: bankwiz_user
 --
 
-ALTER TABLE ONLY public.bank_account
-    ADD CONSTRAINT fk_user_bankaccount FOREIGN KEY (user_account_id) REFERENCES public.user_account(user_account_id);
+ALTER TABLE ONLY public.bank_accounts
+    ADD CONSTRAINT fk_user_bankaccount FOREIGN KEY (user_account_id) REFERENCES public.user_accounts(user_account_id);
 
 
 --

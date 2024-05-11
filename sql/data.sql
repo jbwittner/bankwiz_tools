@@ -17,18 +17,18 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- Data for Name: user_account; Type: TABLE DATA; Schema: public; Owner: bankwiz_user
+-- Data for Name: user_accounts; Type: TABLE DATA; Schema: public; Owner: bankwiz_user
 --
 
-COPY public.user_account (user_account_id, auth_id, email) FROM stdin;
+COPY public.user_accounts (user_account_id, auth_id, email) FROM stdin;
 \.
 
 
 --
--- Data for Name: bank_account; Type: TABLE DATA; Schema: public; Owner: bankwiz_user
+-- Data for Name: bank_accounts; Type: TABLE DATA; Schema: public; Owner: bankwiz_user
 --
 
-COPY public.bank_account (scale_base_amount, bank_account_id, user_account_id, bank_account_name, currency_iso_code) FROM stdin;
+COPY public.bank_accounts (scale_base_amount, bank_account_id, user_account_id, bank_account_name, currency_iso_code) FROM stdin;
 \.
 
 
